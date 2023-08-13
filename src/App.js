@@ -6,6 +6,7 @@ class App extends Component {
     return (
       <Layout>
         <BurgerBuilder />
+        <p>Testing paragraph</p>
       </Layout>
     )
   }
