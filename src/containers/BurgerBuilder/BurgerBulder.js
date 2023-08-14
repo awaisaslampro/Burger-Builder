@@ -9,13 +9,19 @@ class BurgerBuilder extends Component {
             cheese: 0,
 
         }
-    }
+    };
+
+
     render() {
+
         return (
             <Auxi>
                 <div>
                     <Burger ingredients={this.state.ingredients} />
 
+                </div>
+                <div>
+                    Build controls
                 </div>
             </Auxi>
         )

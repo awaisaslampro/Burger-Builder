@@ -6,11 +6,8 @@ class App extends Component {
     return (
       <Layout>
         <BurgerBuilder />
-        <p>Testing paragraph will be working</p>
       </Layout>
     )
   }
-
 }
-
 export default App;
