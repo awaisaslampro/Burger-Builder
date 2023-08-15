@@ -7,7 +7,6 @@ function Home() {
     const [show, setShow] = useState(false);
 
     const nameHandler = () => {
-        console.log('clicked')
         let showName = show;
         setShow(!showName)
     }
