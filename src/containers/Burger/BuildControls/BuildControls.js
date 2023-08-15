@@ -9,12 +9,10 @@ const controls = [
 ]
 const BuildControls = (props) => {
     return (
-        <div>
+        <div className={classes.BuildControls}>
             {controls.map(ctrl => (
                 <BuildControl key={ctrl.label} label={ctrl.label} />
             ))}
-
-            <div>Build Controls</div>
         </div>
 
     )
