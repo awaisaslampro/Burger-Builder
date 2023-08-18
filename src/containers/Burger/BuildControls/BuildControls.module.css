@@ -16,8 +16,10 @@
     border: 1px solid #966909;
     color: #966909;
     font-family: inherit;
+    font-weight: bold;
+    margin-top: 10px;
     font-size: 1.2em;
-    padding: 15px 30px;
+    padding: 11px 29px;
     box-shadow: 2px 2px 2px #966909;
 }
 

@@ -19,6 +19,7 @@ const OrderSummary = (props) => {
                 <ul className='list-disc pl-8 py-5'>
                     {ingredientSummary}
                 </ul>
+                <p className='font-black'>Total Price: {`${props.price.toFixed(2)}$`}</p>
                 <p>Continue to Checkout?</p>
 
                 <Button btnType="Danger" clicked={props.purchaseCanceled}>CANCEL</Button>
