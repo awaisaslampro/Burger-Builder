@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Auxi from '../../hoc/Auxi';
 import Burger from '../Burger/Burger';
 import BuilControls from '../Burger/BuildControls/BuildControls';
 import Modal from '../../UI/Modal/Modal';
 import OrderSummary from '../Burger/OrderSummary/OrderSummary';
+import Auxi from '../../hoc/Auxi/Auxi';
 
 const INGREDIENT_PRICES = {
     salad: 0.5,
@@ -88,6 +88,7 @@ class BurgerBuilder extends Component {
         }
         //will return structure like this {salad: true,bacon:false,cheese:true}
         return (
+            // <Auxi/>
             <Auxi>
                 <div>
                     <Modal show={this.state.purchasing} modalClosed={this.purchasCancelHandler}>
