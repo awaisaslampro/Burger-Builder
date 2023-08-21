@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Auxi from "../../hoc/Auxi/Auxi";
-import SideDrawer from "../Navigation/Toolbar/SideDrawer/SideDrawer";
-import Toolbar from "../Navigation/Toolbar/Toolbar";
-import classes from './Layout.module.css'
+import classes from './Layout.module.css';
+import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
+import SideDrawer from "../../components/Navigation/Toolbar/SideDrawer/SideDrawer";
 class Layout extends Component {
     state = {
         showSideDrawer: false
