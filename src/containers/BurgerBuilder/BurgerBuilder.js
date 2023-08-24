@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+// import history from '../../hoc/history';
 import Auxi from '../../hoc/Auxi/Auxi';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
@@ -8,7 +8,7 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import axios from '../../axios-orders';
-
+// const history = useHistory();
 const INGREDIENT_PRICES = {
     salad: 0.5,
     cheese: 0.4,
@@ -30,8 +30,9 @@ class BurgerBuilder extends Component {
         error: false
     }
 
+
     componentDidMount() {
-        console.log(this.props);
+        console.log('props ', this.props);
         axios.get('https://react-my-burger-e2518-default-rtdb.europe-west1.firebasedatabase.app/ingredients.json')
             .then(response => {
                 this.setState({ ingredients: response.data });
@@ -115,7 +116,8 @@ class BurgerBuilder extends Component {
         //     .catch( error => {
         //         this.setState( { loading: false, purchasing: false } );
         //     } );
-        this.props.history.push('/checkout');
+        console.log(this.props)
+        // history.push('/checkout');
     }
 
     render() {
@@ -163,4 +165,4 @@ class BurgerBuilder extends Component {
     }
 }
 
-export default withErrorHandler(BurgerBuilder, axios);
+export default withRouter(BurgerBuilder, axios);

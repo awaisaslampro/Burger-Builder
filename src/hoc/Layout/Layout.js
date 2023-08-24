@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Auxi from '../../hoc/Auxi/Auxi'
-import classes from './Layout.css';
+import classes from './Layout.module.css';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 
