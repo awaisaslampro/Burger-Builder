@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
+import Modal from '../../components/UI/Modal/Modal';
 import Auxi from '../Auxi/Auxi';
-import Modal from '../../UI/Modal/Modal';
 
 const withErrorHandler = (WrappedComponent, axios) => {
     return class extends Component {
@@ -41,4 +42,5 @@ const withErrorHandler = (WrappedComponent, axios) => {
         }
     }
 }
+
 export default withErrorHandler;

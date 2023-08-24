@@ -1,3 +1,3 @@
-const Auxi = (props) => props.children;
+const auxi = (props) => props.children;
 
-export default Auxi;
+export default auxi;

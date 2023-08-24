@@ -1,32 +1,37 @@
 import React, { Component } from 'react';
-import Auxi from "../../../hoc/Auxi/Auxi";
-import Button from '../../../UI/Button/Button'
+
+import Auxi from '../../../hoc/Auxi/Auxi';
+import Button from '../../UI/Button/Button';
+
 class OrderSummary extends Component {
+    // This could be a functional component, doesn't have to be a class
+    componentWillUpdate() {
+        console.log('[OrderSummary] WillUpdate');
+    }
+
     render() {
         const ingredientSummary = Object.keys(this.props.ingredients)
-            .map((igKey) => {
-                return <li className='font-semibold' key={igKey}>
-                    <span
-                        style={{ textTransform: 'capitalize' }}>
-                        {igKey}</span>:{this.props.ingredients[igKey]}
-                </li>
-            })
+            .map(igKey => {
+                return (
+                    <li key={igKey}>
+                        <span style={{ textTransform: 'capitalize' }}>{igKey}</span>: {this.props.ingredients[igKey]}
+                    </li>);
+            });
+
         return (
             <Auxi>
-                <div className='m-2.5'>
-                    <p className='font-black text-lg'>Your Order</p>
-                    <p className='pt-5 italic'>A delicious burger with the following ingredients:</p>
-                    <ul className='list-disc pl-8 py-5'>
-                        {ingredientSummary}
-                    </ul>
-                    <p className='font-black'>Total Price: {`${this.props.price.toFixed(2)}$`}</p>
-                    <p>Continue to Checkout?</p>
-
-                    <Button btnType="Danger" clicked={this.props.purchaseCanceled}>CANCEL</Button>
-                    <Button btnType="Success" clicked={this.props.purchaseContinued}>CONTINUE</Button>
-                </div>
+                <h3>Your Order</h3>
+                <p>A delicious burger with the following ingredients:</p>
+                <ul>
+                    {ingredientSummary}
+                </ul>
+                <p><strong>Total Price: {this.props.price.toFixed(2)}</strong></p>
+                <p>Continue to Checkout?</p>
+                <Button btnType="Danger" clicked={this.props.purchaseCancelled}>CANCEL</Button>
+                <Button btnType="Success" clicked={this.props.purchaseContinued}>CONTINUE</Button>
             </Auxi>
-        )
+        );
     }
 }
+
 export default OrderSummary;
