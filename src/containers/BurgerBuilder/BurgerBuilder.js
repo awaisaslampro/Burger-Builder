@@ -29,8 +29,6 @@ class BurgerBuilder extends Component {
         loading: false,
         error: false
     }
-
-
     componentDidMount() {
         console.log('props ', this.props);
         axios.get('https://react-my-burger-e2518-default-rtdb.europe-west1.firebasedatabase.app/ingredients.json')
@@ -116,8 +114,16 @@ class BurgerBuilder extends Component {
         //     .catch( error => {
         //         this.setState( { loading: false, purchasing: false } );
         //     } );
-        console.log(this.props)
-        // history.push('/checkout');
+
+        const queryParams = [];
+        for (let i in this.state.ingredients) {
+            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
+        }
+        const queryString = queryParams.join('&');
+        this.props.history.push({
+            pathname: '/checkout',
+            search: '?' + queryString
+        });
     }
 
     render() {
@@ -165,4 +171,4 @@ class BurgerBuilder extends Component {
     }
 }
 
-export default withRouter(BurgerBuilder, axios);
+export default withErrorHandler(BurgerBuilder, axios);
