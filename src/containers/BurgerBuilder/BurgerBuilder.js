@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import history from '../../hoc/history';
 import Auxi from '../../hoc/Auxi/Auxi';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
@@ -8,19 +7,13 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import axios from '../../axios-orders';
-// const history = useHistory();
 const INGREDIENT_PRICES = {
     salad: 0.5,
     cheese: 0.4,
     meat: 1.3,
-    bacon: 0.7
+    chicken: 0.7
 };
-
 class BurgerBuilder extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {...}
-    // }
     state = {
         ingredients: null,
         totalPrice: 4,
@@ -30,7 +23,6 @@ class BurgerBuilder extends Component {
         error: false
     }
     componentDidMount() {
-        console.log('props ', this.props);
         axios.get('https://react-my-burger-e2518-default-rtdb.europe-west1.firebasedatabase.app/ingredients.json')
             .then(response => {
                 this.setState({ ingredients: response.data });
@@ -91,41 +83,17 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () => {
-        // alert('You continue!');
-        // this.setState( { loading: true } );
-        // const order = {
-        //     ingredients: this.state.ingredients,
-        //     price: this.state.totalPrice,
-        //     customer: {
-        //         name: 'Max Schwarzmüller',
-        //         address: {
-        //             street: 'Teststreet 1',
-        //             zipCode: '41351',
-        //             country: 'Germany'
-        //         },
-        //         email: 'test@test.com'
-        //     },
-        //     deliveryMethod: 'fastest'
-        // }
-        // axios.post( '/orders.json', order )
-        //     .then( response => {
-        //         this.setState( { loading: false, purchasing: false } );
-        //     } )
-        //     .catch( error => {
-        //         this.setState( { loading: false, purchasing: false } );
-        //     } );
-
         const queryParams = [];
         for (let i in this.state.ingredients) {
             queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
         }
+        queryParams.push('price=' + this.state.totalPrice);
         const queryString = queryParams.join('&');
         this.props.history.push({
             pathname: '/checkout',
             search: '?' + queryString
         });
     }
-
     render() {
         const disabledInfo = {
             ...this.state.ingredients
